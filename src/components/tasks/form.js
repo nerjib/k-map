@@ -228,28 +228,27 @@ Actions.home();
      <RNPickerSelect style={{color:'red'}} onValueChange={this.handleStage}
     items={[
         {label:'Taking Over Site',  value:'TOS'},
-        {label:'Geophysical Survey ', value:'GS'},
-        {label:'Drilling ', value:'Drilling'},
-        {label:'Excavation ', value:'Excavation'},
-        {label:'Sub-Structure ', value:'SubS'},
-        {label:'Super-Structure ', value:'SuperS'},
-        {label:'Pumping Test', value:'PT'},
-        {label:'Pump Installation', value:'PI'},
-        {label:'Foundation for Stanchion ', value:'FS'},
-        {label:'Erection of Stanchion', value:'ES'},
+        {label:'Geophysical Survey (Water) ', value:'GS'},
+        {label:'Drilling (Water) ', value:'Drilling'},
+        {label:'Excavation (VIP)', value:'Excavation'},
+        {label:'Sub-Structure (VIP) ', value:'SubS'},
+        {label:'Super-Structure (VIP) ', value:'SuperS'},
+        {label:'Pumping Test (Water)', value:'PT'},
+        {label:'Pump Installation (Water)', value:'PI'},
+        {label:'Platforming (Water)', value:'Platforming'},
+        {label:'Foundation for Stanchion (Solar) ', value:'FS'},
+        {label:'Erection of Stanchion (Solar)', value:'ES'},
         {label:'Installation of Solar Pump/Panel ', value:'ISP'},
-        {label:'Reticulation', value:'Reticulation'},
-        {label:'Fittings and Finishing ', value:'Finishing'},
-        {label:'Completion Report ', value:'CR'},
-        {label:'Final Report', value:'FR'},
-     
+        {label:'Reticulation (Solar)', value:'Reticulation'},
+        {label:'Fittings and Finishing (VIP) ', value:'Finishing'},    
+    {label:'Final on from site', value:'FR'},     
     ]}
     />
 
      </View>
 
      <View>
-         <Text style={styles.txtstatus}>Project Status</Text>
+   {/*}      <Text style={styles.txtstatus}>Project Status</Text>
      <RNPickerSelect style={{color:'red'}} onValueChange={this.handleStatus}
     items={[
         {label:'Ongoin',  value:'ongoing'},
@@ -257,7 +256,7 @@ Actions.home();
         {label:'Abandoned ', value:'abandoned'}         
     ]}
     />
-
+*/}
      </View>
 {/*
         <View>

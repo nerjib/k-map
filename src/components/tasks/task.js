@@ -19,7 +19,7 @@ loader(){
  //})
  AsyncStorage.getItem('userid').then((val)=>{
 
-  axios.get('https://ruwassa.herokuapp.com/api/v1/projects/localsupervisors/'+val)
+  axios.get('https://ruwassa.herokuapp.com/api/v1/projects/localsupervisors/donephases/'+val)
   .then(res=>{
   //    alert(this._isMounted)
  //     if(this._isMounted){
@@ -30,7 +30,7 @@ loader(){
   //}
   }).catch(error=>{console.log(error)})
 
-  axios.get('https://ruwassa.herokuapp.com/api/v1/projects/statesupervisors/'+val)
+  axios.get('https://ruwassa.herokuapp.com/api/v1/projects/statesupervisors/donephases/'+val)
   .then(res=>{
   //    alert(this._isMounted)
  //     if(this._isMounted){
@@ -61,27 +61,40 @@ Actions.taskDetails({pid,uid})
         return(
             <ScrollView style={{backgroundColor:'#00e9f9'}}>
             <View style={styles.container}>
-                {Object.keys(this.state.tasks).map((e)=><TouchableOpacity onPress={()=>this.goToDetails(this.state.tasks[e].id,this.state.userId)} style={styles.row} key={e}>
-                <Text  style={styles.txtname} > {this.state.tasks[e].title} </Text>
+                {Object.keys(this.state.tasks).map((e,i)=>//{
+              //      if(this.state.tasks[e].done !='1'){
+                <TouchableOpacity onPress={()=>this.goToDetails(this.state.tasks[e].id,this.state.userId)} style={styles.row} key={e}>
+               <Text  style={styles.txtname}>
+                <Text  > {this.state.tasks[e].title} </Text>
+                <Text  style={styles.txtphase} > Phase {this.state.tasks[e].phase} </Text>
+                </Text>
                 <Text style={styles.txtloc}><Text style={styles.txtl}>{this.state.tasks[e].community}<Text style={styles.sep}>|</Text></Text>
                 <Text style={styles.txtstat}>{this.state.tasks[e].status}</Text>
                 <Text style={styles.sep}>|</Text>
                 <Text style={styles.txtstat}>{this.state.tasks[e].pstatus}</Text>
                 </Text>
-                </TouchableOpacity>
+                  </TouchableOpacity>
+          //      }
+          //}
             )
                 }
 
-{Object.keys(this.state.tasks2).map((e)=><TouchableOpacity onPress={()=>this.goToDetails(this.state.tasks2[e].id,this.state.userId)} style={styles.row} key={e}>
-                <Text  style={styles.txtname} > {this.state.tasks2[e].title} </Text>
-                <Text style={styles.txtloc}><Text style={styles.txtl}>{this.state.tasks2[e].community}<Text style={styles.sep}>|</Text></Text>
+{Object.keys(this.state.tasks2).map((e)=>//{if(this.state.tasks2[e].done ==null){
+<TouchableOpacity onPress={()=>this.goToDetails(this.state.tasks2[e].id,this.state.userId)} style={styles.row} key={e}>
+<Text  style={styles.txtname}>
+                <Text  > {this.state.tasks2[e].title} </Text>
+                <Text  style={styles.txtphase} > Phase {this.state.tasks2[e].phase} </Text>
+                </Text><Text style={styles.txtloc}><Text style={styles.txtl}>{this.state.tasks2[e].community}<Text style={styles.sep}>|</Text></Text>
                     <Text style={styles.txtl}>{this.state.tasks2[e].location}</Text>
                 <Text style={styles.txtstat}>{this.state.tasks2[e].status}</Text><Text style={styles.sep}>|</Text>   
                 <Text style={styles.txtstat}>{this.state.tasks2[e].pstatus}</Text>
                 </Text>
                 </TouchableOpacity>
+                //    }}
+    //}
             )
                 }
+            
             
             
             </View>
@@ -118,9 +131,18 @@ const styles = StyleSheet.create({
         backgroundColor:'#00a9f9',
     },
     txtname:{
+        flexDirection:'column',
         textAlign:'left',
         fontSize:20,
-        color:'white'
+        color:'white',
+        alignItems:'center',
+
+    },
+    txtphase:{
+         textAlign:'right',
+        fontSize:20,
+        color:'white',
+        padding:50
     },
     txtloc:{
         flexDirection:'column',

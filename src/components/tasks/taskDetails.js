@@ -21,7 +21,8 @@ constructor(props){
             statesupervisor:'',
             profile:'',
             stateid:'',
-            localid:''
+            localid:'',
+            phase:''
         
         }
 }
@@ -36,7 +37,9 @@ componentDidMount(){
         this.setState({
             tasks: res.data,
             stateid: res.data[0].state_id,      
-            localid: res.data[0].local_id           
+            localid: res.data[0].local_id,
+            phase: res.data[0].phase           
+           
           })
 
           axios.get('https://ruwassa.herokuapp.com/api/v1/users/'+res.data[0].state_id)
@@ -102,6 +105,9 @@ goToReportForm=(pid)=>{
             <View key={e}>
                 <View style={styles.row}>
                 <Text style={styles.title}>Project Title: </Text><Text style={styles.info}> {this.state.tasks[e].title}</Text>
+                </View>
+                <View style={styles.row}>
+                <Text style={styles.title}>Phase: </Text><Text style={styles.info}> {this.state.tasks[e].phase}</Text>
                 </View>
                 <View style={styles.row}>
                 <Text style={styles.title}>Ward </Text><Text style={styles.info}>{this.state.tasks[e].ward}</Text>
